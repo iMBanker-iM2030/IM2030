@@ -1,11 +1,12 @@
+import pandas
 excludedCol = ['고객ID', '기준년월']
 def df_value_counts(df, excludedCol = None):
     for col in df.columns:
         if excludedCol:
             if col not in excludedCol:
-                df[col].value_counts()
+                print(df[col].value_counts())
         else:
-            df[col].value_counts()
+            print(df[col].value_counts())
 
 
 def anova(df, col1, col2):
