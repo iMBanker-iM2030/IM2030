@@ -1,5 +1,6 @@
 import pandas
-excludedCol = ['고객ID', '기준년월']
+
+# 카테고리에만???
 def df_value_counts(df, excludedCol = None):
     for col in df.columns:
         if excludedCol:
@@ -34,7 +35,7 @@ def anova(df, col1, col2):
     print(posthoc)
 
 
-def x2(df):
+def chi_squared(df):
     from scipy.stats import chi2_contingency
     # 카이제곱 검정 수행
     chi2, p, dof, expected = chi2_contingency(df)
@@ -50,3 +51,12 @@ def x2(df):
         print("두 변수 간에 연관이 있습니다. (귀무가설 기각)")
     else:
         print("두 변수 간에 연관이 없습니다. (귀무가설 채택)")
+
+def columns(df):
+    import numpy as np
+    cat_cols = df.select_dtypes(exclude=np.number).columns.tolist()
+
+def nullCheck(df):
+    for col in df.columns:
+        print(df[col].isnull().sum())
+
